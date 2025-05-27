@@ -1,0 +1,45 @@
+<div class="spinner">
+<div class="spin-text">Loading</div>
+<div class="spin-sector spin-sector-red"></div>
+<div class="spin-sector spin-sector-blue"></div>
+<div class="spin-sector spin-sector-green"></div>
+</div>
+
+*{
+box-sizing: border-box;
+}.spinner{
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100px;
+height: 100px;
+}.spin-sector{
+border-radius: 50%;
+position: absolute;
+width:100%;
+height: 100%;
+border: 15px solid transparent;
+background-color: transparent;
+mix-blend-mode: overlay;
+}.spin-sector-red{
+border-top: 15px solid rgb(241, 115, 99);
+animation: rotate 1s ease infinite;
+}.spin-sector-blue{
+border-top: 15px solid rgb(96, 96, 204);
+animation: rotate 1.5s ease-in infinite;
+}.spin-sector-green{
+border-top: 15px solid rgb(106, 172, 106);
+animation: rotate 2s ease-out infinite;
+}.spin-text{
+animation: loading-opacity 2s ease-out infinite;
+font-size: 2em;
+}@keyframes rotate{
+from { transform: rotate(0);}
+to {transform: rotate(360deg);}
+}@keyframes loading-opacity {
+0%, 100% {opacity: 1;}
+25%, 75% {opacity: .5;}
+50% {opacity: .1;}
+}
+

@@ -1,0 +1,92 @@
+<html>
+<head> 
+<script src="test.js"></script>
+</head>
+<body> 
+ <div class="radio-list">
+  <label class="radio" >
+    <input id="radio__toggle1" type="checkbox">
+    <span>First Label</span>
+  </label>
+  <label class="radio">
+    <input id="radio__toggle2" type="checkbox" checked>
+    <span>Second Label</span>
+  </label>
+ </div>
+<style>
+
+.radio-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+:root{
+    --fontSize: 1em;
+    --defCol: #15e;
+    --defColFocus: #1b1;
+    --defColGrey: #888;
+}
+.radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio span {
+    margin-left: 8px;
+    color: var(--defCol);
+    font-size: var(--fontSize);
+    line-height: calc(var(--fontSize) * 1.2);
+    transition: 0.3s;
+    user-select: none; /* user cannot select the text*/
+}
+
+.radio input[type="checkbox"]{
+    position: relative;
+    min-width: 50px;
+    height: calc(var(--fontSize) * 2);
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    border: 2px solid var(--defCol);
+    box-sizing: border-box;
+    border-radius: calc(var(--fontSize) * 2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.radio input[type="checkbox"]:focus{
+ border: 2px solid var(--defColFocus);
+}
+
+.radio input::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    width: calc(var(--fontSize) * 1.5);
+    height: calc(var(--fontSize) * 1.5);
+    background-color: var(--defColGrey);
+    border-radius: 50%;
+    transform: translateX(0);
+    transition: all 0.5s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+}
+
+.radio input:checked::after {
+    transform: translateX(calc(100% + 4px));
+    left: initial;
+    background-color: var(--defColFocus);
+}
+
+.radio input:checked ~ span {
+    color: var(--defColFocus);
+}
+
+
+</style>
+</body>
+</html>

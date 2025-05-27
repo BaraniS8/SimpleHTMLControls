@@ -1,0 +1,88 @@
+<html>
+<head> 
+<script src="test.js"></script>
+</head>
+<body> 
+
+ <div class="container">
+    <label >
+	<input type="checkbox">
+	<div class="box red">Red
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+    </label>
+    <label >
+	<input type="checkbox">
+	<div class="box green">Green
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+    </label>
+    <label >
+	<input type="checkbox">
+	<div class="box blue">Blue
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+    </label>
+ </div>
+
+<svg >
+	<symbol id="svgTick" class="svgTick">
+	    <line stroke-width="3" x1="5%" y1="35%" x2="35%" y2="90%"/>
+	    <line stroke-width="3" x1="26%" y1="90%" x2="95%" y2="15%"/>
+	<symbol>
+</svg>
+<style>
+:root{
+  --foreColor: #fff;
+  --backColor: #000;
+}
+
+.svgEle{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    stroke: #fff;
+    border-radius: 50%;
+    background: #000;
+    padding: 3px;
+    top: -12;
+    right: -12;
+    display: none;
+}
+
+.container{
+ display: flex;
+ flex-direction: row;
+}
+.container .box{
+    position: relative;
+    width: 3em;
+    height: 1em;
+    border: 5px solid transparent;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    margin: 10px;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.box.red{background: #F00;}
+.box.green{background: #0F0;}
+.box.blue{background: #00F;}
+
+.container input{
+    appearance: none;
+}
+
+.container input:checked + .box {
+    border: 5px solid black;
+}
+
+.container input:checked + .box svg{
+    display: block;
+}
+
+</style>
+</body>
+</html>

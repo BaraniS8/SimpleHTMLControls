@@ -1,0 +1,59 @@
+<html>
+<head> 
+<script src="test.js"></script>
+</head>
+<body> 
+ <div class="txtInput">
+   <input type="text" />
+   <lbl>First Name</lbl>
+ </div>
+ <div class="txtInput">
+   <input type="text" />
+   <lbl>First Name</lbl>
+ </div>
+ <div class="txtInput">
+   <input type="text" />
+   <lbl>First Name</lbl>
+ </div>
+
+<style>
+
+.txtInput {
+  position: relative; 
+  display: inline-block; 
+  margin: 8px;
+}
+
+.txtInput lbl {
+  width: auto;
+  height: auto;
+  padding: 0 5px;
+  position: absolute; 
+  top: -10px;
+  left: 5px;
+  background: #fff;
+  font-weight: 600;
+  font-size: .9em;
+  color: #15e;
+}
+
+.txtInput input[type="text"] {
+  text-align: left;
+  width: 200px;
+  height: 30px; 
+  outline: solid #15e 1px; 
+  padding: 5px 10px 0;
+  font-size: 1em;
+}
+
+.txtInput input[type="text"]:focus {
+  outline: solid #1b1 1px; 
+}
+
+.txtInput input[type="text"]:focus ~ lbl{
+  color: #1b1;
+}
+
+</style>
+</body>
+</html>

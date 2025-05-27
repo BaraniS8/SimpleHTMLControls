@@ -1,0 +1,55 @@
+<!-- https://dev.w3.org/html5/html-author/charref -->
+
+<html>
+<head> 
+<script src="test.js"></script>
+<link rel="icon" type="image/x-icon" href="bing.ico">
+</head>
+<body> 
+  <div id="output">
+<svg class="svgEle"><use href="#svgTick"></use></svg>
+<svg class="svgEle"><use href="#svgTick"></use></svg>
+<svg class="svgEle"><use href="#svgTick"></use></svg>
+<svg class="svgEle"><use href="#svgTick"></use></svg>
+</div>
+
+<svg style="height:0">
+	<symbol id="svgTick" class="svgTick">
+	    <line class="line1" stroke-width="3" x1="5%" y1="35%" x2="35%" y2="90%"/>
+	    <line class="line2" stroke-width="3" x1="26%" y1="90%" x2="95%" y2="15%"/>
+	<symbol>
+</svg>
+
+
+<style>
+
+
+.svgEle{
+    position: relative;
+    width: 15px;
+    height: 15px;
+    stroke: #fff;
+    border-radius: 50%;
+    background: #000;
+    padding: 3px;
+}
+
+
+.svgEle:hover > .line2{
+transform: skew(7deg, -22deg);
+stroke: #00f;
+}
+
+.svgEle:hover {
+transform: skew(7deg, -22deg);
+stroke: #00f;
+background: #ff0;
+width: 20px;
+height: 20px;
+}
+</style>
+<script>
+
+</script>
+</body>
+</html>

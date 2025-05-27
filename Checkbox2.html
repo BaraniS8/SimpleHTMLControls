@@ -1,0 +1,128 @@
+<html>
+<head> 
+<script src="test.js"></script>
+</head>
+<body> 
+ <div class="container">
+  <label class="chkswitch">
+    <input type="checkbox" checked>
+    <span class="chkSlider">
+      <span class="chkcheckOn">ON</span>
+      <span class="chkcheckOff">OFF</span>
+    </span>
+  </label>
+  <label class="chkswitch">
+    <input type="checkbox" checked>
+    <span class="chkSlider">
+      <span class="chkcheckOn">YES</span>
+      <span class="chkcheckOff">NO</span>
+    </span>
+  </label>
+  <label class="chkswitch">
+    <input type="checkbox" checked>
+    <span class="chkSlider">
+      <span class="chkcheckOn">
+	<svg class="svgEle">
+	  <line stroke-width="3" x1="5%" y1="35%" x2="35%" y2="90%"/>
+	  <line stroke-width="3" x1="26%" y1="90%" x2="95%" y2="15%"/>
+	</svg>
+      </span>
+      <span class="chkcheckOff">
+	<svg class="svgEle">
+	  <line  stroke-width="3" x1="10%" y1="10%" x2="90%" y2="90%"/>
+	  <line  stroke-width="3" x1="10%" y1="90%" x2="90%" y2="10%"/>
+	</svg>
+      </span>
+    </span>
+  </label>
+</div>
+
+<style>
+:root{
+  --foreColor: #fff;
+  --backColor: #000;
+}
+.svgEle{
+width: 10px;
+height: 10px;
+stroke: #fff;
+}
+
+.container{
+ display: flex;
+ flex-direction: row;
+}
+
+.chkswitch {
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 1.4em;
+  margin: 0 10px;
+}
+
+.chkswitch input, .chkSlider .chkcheckOn{
+  display:none;
+}
+
+.chkSlider .chkcheckOn, .chkSlider .chkcheckOff{
+  color: var(--foreColor);
+  position:absolute;
+  font-size:.8em;
+  user-select: none;
+}
+
+.chkSlider .chkcheckOn{left:10px;}
+.chkSlider .chkcheckOff{right:10px;}
+
+
+.chkSlider {
+  position: absolute;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: #db3a34;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius:50px;
+}
+
+.chkSlider:before {
+  position: absolute;
+  content:"";
+  height: 1em;
+  width: 1em;
+  left: 4px;
+  bottom: 4px;
+  border-radius:50%;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.chkswitch input:checked + .chkSlider .chkcheckOn  {
+  display:block;
+}
+
+.chkswitch input:checked + .chkSlider .chkcheckOff{
+  display:none;
+}
+
+.chkswitch input:checked + .chkSlider {
+  background-color: #52b69a;
+}
+
+.chkswitch input:checked + .chkSlider:before {
+
+  -webkit-transform: translateX(2em);
+  -ms-transform: translateX(2em);
+  transform: translateX(2em);
+}
+
+</style>
+</body>
+</html>

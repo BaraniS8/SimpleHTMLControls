@@ -1,0 +1,60 @@
+https://codepen.io/artisticlogicmk/pen/zYdmROb
+
+<html>
+<head> 
+<script src="test.js"></script>
+</head>
+<body> 
+ <div class="container">
+    <input type="radio" class="gender genMale" name="gender"></input>
+    <input type="radio" class="gender genFemale" name="gender"></input>
+    <input type="radio" class="gender genOther" name="gender"></input>
+ </div>
+
+ <div class="container">
+    <input type="checkbox" class="gender genMale" ></input>
+    <input type="checkbox" class="gender genFemale" ></input>
+    <input type="checkbox" class="gender genOther" ></input>
+ </div>
+<style>
+:root{
+  --foreColor: #fff;
+  --backColor: #000;
+}
+.container{
+ display: flex;
+ flex-direction: row;
+}
+.gender{
+    position: relative;
+    width: 5em;
+    height: 1.5em;
+    appearance: none;
+    border: 0;
+    border-radius: 50px;
+    color: #fff;
+    background: #1be;
+    padding: 2;
+}
+
+.genMale:before, .genFemale:before, .genOther:before{
+    position: absolute;
+    font-size: 1em;
+    padding: 1px;
+    font-weight: 600;
+}
+.genMale:before{ content: "Male"; left: 25%;}
+.genFemale:before{content: "Female"; left: 15%;}
+.genOther:before{content: "Other"; left: 20%;}
+
+.gender:checked{
+ background: #191;
+}
+
+.gender:hover{
+ background-color: #191;
+}
+
+</style>
+</body>
+</html>

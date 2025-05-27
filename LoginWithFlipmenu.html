@@ -1,0 +1,209 @@
+<!-- https://dev.w3.org/html5/html-author/charref -->
+
+<html>
+<head> 
+<script src="test.js"></script>
+<link rel="icon" type="image/x-icon" href="bing.ico">
+</head>
+<body> 
+<form name="login">
+	<div class="leftDesign">
+	</div>
+	<div class="loginPage">
+
+	   <div >
+	  	<label >
+		<div class="menu">
+	          <input type="checkbox" >
+        	  <span>_</span>
+	        </div>
+                </label>
+	  </div>
+	  <div class="frmLogin">
+	    <div class="txtInput">
+	      <input type="text" />
+	      <lbl>User Name</lbl>
+	    </div>
+	    <div class="txtInput">
+	      <input type="password" />
+	      <lbl>Password</lbl>
+	    </div>
+           </div>
+        </div>
+<form>
+
+<style>
+
+.leftDesign{
+  width: 1px;
+}
+
+.login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.loginPage{
+ display: flex;
+ flex-direction: column;
+row-gap: 3em;
+padding: 3em;
+ height: 90%;
+}
+
+
+
+.frmLogin{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+}
+
+
+/*--------------------------------------------text box style-----------------------------*/
+
+.txtInput {
+  position: relative; 
+  display: inline-block; 
+  margin: 8px;
+}
+
+.txtInput lbl {
+  width: auto;
+  height: auto;
+  padding: 0 5px;
+  position: absolute; 
+  top: -10px;
+  left: 5px;
+  background: #fff;
+  font-weight: 600;
+  font-size: .9em;
+  color: #15e;
+}
+
+.txtInput input{
+  text-align: left;
+  width: 20em;
+    height: 2em;
+  outline: solid #15e 1px; 
+  padding: 5px 10px 0;
+  font-size: 1em;
+  border-style: none;
+    box-shadow: 3px 4px 6px 0px black;
+}
+
+.txtInput input:hover{
+	outline: solid #1b1 1px;
+  color: #1b1;
+}
+
+.txtInput input:focus ~ lbl{
+  color: #1b1;
+}
+
+/*--------------------------------------------Menu Button style-----------------------------*/
+
+.menu {
+    --front: #275EFE;
+    --back: #D93757;
+    --icon: white;
+    perspective: 600px;
+    width: 2em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+	left: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.menu input{
+ display: none;
+}
+
+
+.menu  span {
+                --rotateY: 0deg;
+                --background: var(--front);
+                transform: rotateY(var(--rotateY));
+                transform-style: preserve-3d;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+backface-visibility: hidden;
+		line-height: 50%;
+    font-weight: bolder;
+    font-size: 1.25em;
+    		color: red;
+    		text-align: center;
+                transition: transform .6s cubic-bezier(.2, .64, .48, 1.24);
+		background: red;
+user-select: none;
+}
+
+.menu  span:before, .menu  span:after {
+                    content: '';
+                    position: absolute;
+                    width: 60%;
+                    height: 2px;
+                    border-radius: 1px;
+                    top: 50%;
+                    left: 50%;
+                    background: var(--icon);
+                    backface-visibility: hidden;
+                }
+
+
+.menu  span:before {
+                        transform: translate(-50%, -50%) rotate(-45deg) translateZ(6px);
+                    }
+.menu  span:after {
+                        transform: translate(-50%, -50%) rotate(45deg) translateZ(6px);
+                    }
+/*
+.menu  span:first-child::before, .menu  span:first-child::after {
+                        display: none;
+                    }
+*/
+
+input:checked + span {
+			transform: rotateY(360deg);
+			background: var(--background);
+			color: white;
+                }
+
+
+input:checked + span:before {
+                    transform: translate(-50%, -50%) rotate(0deg) translateY(4px);
+		  width: 40%;
+                }
+input:checked + span:after {
+                    transform: translate(-50%, -50%) rotate(0deg) translateY(-4px);
+		  width: 40%;
+                }
+
+/*--------------------------------------------Menu Button style ends-----------------------------*/
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body{
+ margin:0px;
+}
+
+</style>
+<script>
+
+</script>
+</body>
+</html>

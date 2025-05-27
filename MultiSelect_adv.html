@@ -1,0 +1,279 @@
+<!-- https://dev.w3.org/html5/html-author/charref -->
+
+<html>
+<head> 
+<script src="test.js"></script>
+<link rel="icon" type="image/x-icon" href="bing.ico">
+</head>
+<body> 
+  <div id="output"></div>
+  <div class="multiSelectText">
+	<input type="text" disabled="true"/>
+	<span onclick="showDropdown()"><div class="MSarrow">&lt;</div></span>
+     	<div class="multiSelectOption showDropdown">
+    		<div class="base"> 
+		    <button onclick="checkall(true)">Select all</button>
+		    <button onclick="checkall(false)">Clear</button>
+		</div>
+<div class="container">
+    <label class="options">
+	<input type="checkbox" value="1">
+	<div class="box">1
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+	</input>
+    </label>
+    <label class="options">
+	<input type="checkbox" value="2"> 
+	<div class="box">2
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+	</input>
+    </label>
+    <label class="options">
+	<input type="checkbox" value="3">
+	<div class="box">3
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+	</input>
+    </label>
+   <label class="options">
+	<input type="checkbox" value="4">
+	<div class="box">4
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+	</input>
+    </label>
+    <label class="options">
+	<input type="checkbox" value="5">
+	<div class="box">5
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+	</input>
+    </label>
+    <label class="options">
+	<input type="checkbox" value="6">
+	<div class="box">6
+	  <svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>
+	</div>
+	</input>
+    </label>
+</div>
+  	</div>
+  </div>
+  <input type="submit" onclick="getSelected()">
+  <button id="btnAdd">add</button>
+
+
+
+
+
+<svg style="height:0">
+	<symbol id="svgTick" class="svgTick">
+	    <line stroke-width="3" x1="5%" y1="35%" x2="35%" y2="90%"/>
+	    <line stroke-width="3" x1="26%" y1="90%" x2="95%" y2="15%"/>
+	<symbol>
+</svg>
+
+
+<style>
+
+.multiSelectOption .base{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: #ddd;
+    
+}
+
+.multiSelectOption {
+    height: 200px;
+    width: 100%;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.5s linear;
+    /* max-height: 30%; */
+    overflow: auto;
+    z-index: 5;
+    position: absolute;
+    border: 2px solid blue;
+    top: 2em;
+    left: -2px;
+}
+
+.base button{
+width: 100%;
+    height: 100%;
+    color: #fff;
+    background: #00f;
+    border: 3px solid #fff;
+    font-weight: 600;
+}
+
+.svgEle{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    stroke: #fff;
+    border-radius: 50%;
+    background: #000;
+    padding: 3px;
+    top: -8;
+    right: 0;
+    display: none;
+}
+
+.container{
+ display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+
+}
+.container .box{
+    position: relative;
+    height: 1em;
+    border: 1px solid transparent;
+    color: #000;
+    padding: 3px;
+    text-align: center;
+    margin: 0;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.container input{
+    appearance: none;
+}
+
+.container input:checked + .box, .container input:hover + .box {
+    background: #36c;
+    color: #fff;
+}
+
+
+
+.container input:checked + .box svg{
+    display: block;
+}
+
+
+#output {
+  padding: 20px;
+  background: #dadada;
+}
+
+.multiSelectText{
+    position: relative;
+    border: 2px solid blue;
+    width: 50%;
+    cursor: pointer;
+}
+
+.multiSelectText > span{
+    position: absolute;
+    font-size: 1.3em;
+    font-weight: bolder;
+    background: #00f;
+    padding: 3;
+    width: 5%;
+    text-align: center;
+    right: 0;
+    border-bottom: 1px solid blue;
+    color: #fff;
+}
+
+.multiSelectText input[type="text"] {
+    position: relative;
+    width: 95%;
+    padding: 5 15px;
+    font-size: 1em;
+    border: none;
+    border-bottom: 1px solid blue;
+}
+
+.showDropdown {
+visibility: hidden;
+  opacity: 0;
+height: 0;
+}
+
+.rotate{
+     transform: rotate(-90deg);
+}
+
+</style>
+<script>
+
+const cont = document.querySelector(".container");
+cont.addEventListener('click',(e)=> listen(e));
+
+function listen(e){
+    if (e.target.nodeName === 'INPUT'){
+	const ip = document.querySelector(".multiSelectText input");
+	if(e.target.checked)
+		ip.value +=e.target.defaultValue+ '; ';
+	else
+	 	ip.value = ip.value.replace(e.target.defaultValue+ '; ','');
+    }
+}
+
+function getSelected(){
+	const val = document.querySelectorAll(".options");
+	const ip = document.querySelector(".multiSelectText input");
+	ip.value = "";
+	val.forEach( a => { if(a.control.checked) ip.value += a.control.value + '; ';});
+	return true;
+}
+
+function showDropdown(){
+const multi = document.querySelector(".multiSelectOption");
+multi.classList.toggle("showDropdown");
+const id = document.querySelector(".MSarrow");
+id.classList.toggle("rotate");
+}
+
+function checkall(ip){
+	const val = document.querySelectorAll(".options");
+	val.forEach( a =>  a.control.checked= ip);
+}
+
+function addOption(){
+var cont = document.querySelector(".container");
+
+let lbl = document.createElement("label");
+let lblatt = document.createAttribute("class");
+lblatt.value="options";
+lbl.setAttributeNode(lblatt);
+
+let ipchk = document.createElement("input");
+ipchk.type = "checkbox";
+ipchk.value = "seven";
+
+let dv = document.createElement("div");
+let dvatt = document.createAttribute("class");
+dvatt.value="box";
+dv.setAttributeNode(dvatt);
+dv.innerHTML='Blue<svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg>';
+
+lbl.appendChild(ipchk);
+lbl.appendChild(dv);
+cont.appendChild(lbl);
+
+
+}
+
+let btn = document.querySelector("#btnAdd");
+let inc = 6;
+btn.addEventListener('click', ()=>
+{
+var cont = document.querySelector(".container");
+let k = document.createElement("label");
+let katt = document.createAttribute("class");
+katt.value="options";
+k.setAttributeNode(katt);
+k.innerHTML= '<input type="checkbox" value="'+ ++inc +'"><div class="box">'+ inc +'<svg class="svgEle"><use xlink:href="#svgTick" href="#svgTick"></svg></div>';
+cont.appendChild(k);
+});
+</script>
+</body>
+</html>
